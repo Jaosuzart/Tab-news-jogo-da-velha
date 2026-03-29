@@ -6,13 +6,13 @@ const colors = {
   text: "#2c3e50",
   boardBg: "#ecf0f1",
   border: "#bdc3c7",
-  x: "#e74c3c",
-  o: "#3498db",
-  accent: "#1abc9c",
-  draw: "#f39c12",
-  easy: "#2ecc71",
-  medium: "#f1c40f",
-  hard: "#e74c3c",
+  x: "#c0392b",
+  o: "#2980b9",
+  accent: "#12876f",
+  draw: "#d35400",
+  easy: "#27ae60",
+  medium: "#d4ac0d",
+  hard: "#c0392b",
 };
 
 const styles = {
@@ -308,7 +308,7 @@ export default function App() {
     <div style={styles.container}>
       <div style={styles.header}>
         <h1 style={styles.title}>Jogo da Velha</h1>
-        <p style={{ margin: 0, opacity: 0.7 }}>Jogue contra a IA</p>
+        <p style={{ margin: 0, color: '#556270' }}>Jogue contra a IA</p>
       </div>
 
       {/* TELA 1: MENU INICIAL */}
@@ -497,7 +497,7 @@ export default function App() {
           paddingBottom: "20px",
           textAlign: "center",
           fontSize: "0.9rem",
-          color: "#7f8c8d",
+          color: "#4a5568",
         }}
       >
         <p>
@@ -508,7 +508,7 @@ export default function App() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              color: "#3498db",
+              color: "#2b6cb0",
               textDecoration: "none",
               fontWeight: "bold",
             }}
