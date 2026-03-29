@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 const colors = {
-  bg: "#f4f7f6",
-  text: "#2c3e50",
-  boardBg: "#ecf0f1",
-  border: "#bdc3c7",
-  x: "#c0392b",
-  accent: "#0b5a46",
-  o: "#2980b9",
-  accent: "#12876f",
-  draw: "#d35400",
-  easy: "#27ae60",
-  medium: "#d4ac0d",
-  hard: "#c0392b",
+bg: '#f8fafc',      // Fundo quase branco, muito limpo
+  text: '#1e293b',    // Cinza azulado bem escuro (mais moderno que o preto puro)
+  boardBg: '#ffffff', // Tabuleiro branco
+  border: '#e2e8f0',  // Bordas sutis
+  x: '#3b82f6',       // Azul vibrante moderno
+  o: '#10b981',       // Verde esmeralda moderno
+  accent: '#6366f1',  // Indigo (cor de apps modernos tipo Discord/Stripe)
+  draw: '#f59e0b',    // Amarelo âmbar
+  easy: '#34d399', 
+  medium: '#fbbf24', 
+  hard: '#f87171'
 };
 
 const styles = {
@@ -21,7 +20,7 @@ const styles = {
     alignItems: "center",
     minHeight: "100vh",
     fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    backgroundColor: colors.bg,
+    background: 'linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%)',
     color: colors.text,
     padding: "20px",
     boxSizing: "border-box",
@@ -294,106 +293,88 @@ export default function App() {
     statusColor = xIsNext ? colors.x : colors.o;
   }
 
-  return (
+ return (
     <main style={styles.container}>
       <section style={styles.header}>
         <h1 style={styles.title}>Jogo da Velha</h1>
-        <p style={{ margin: 0, color: '#556270' }}>Jogue contra a IA</p>
+        <p style={{ margin: 0, color: '#64748b' }}>Jogue contra a IA</p>
       </section>
 
       {gameState === "menu" && (
         <div style={styles.menu}>
-          <h2>Escolha o modo de jogo:</h2>
-          <button
-            onClick={() => selectMode("PvP")}
-            style={{ ...styles.button, backgroundColor: '#154360', color: 'white' }}
-          >
-            2 Jogadores (Local)
-          </button>
+          <h2 style={{ fontSize: '1.2rem', marginBottom: '15px' }}>Escolha o modo de jogo:</h2>
           <button
             onClick={() => selectMode("PvIA")}
-            style={{ ...styles.button, backgroundColor: '#922b21', color: 'white' }}
+            style={{ ...styles.button, backgroundColor: colors.accent, color: 'white' }}
           >
-            Contra a IA (Computador)
+            🤖 Desafiar a IA (Computador)
+          </button>
+          <button
+            onClick={() => selectMode("PvP")}
+            style={{ ...styles.button, backgroundColor: 'transparent', color: colors.accent, border: '2px solid ' + colors.accent, marginTop: '10px' }}
+          >
+            👥 2 Jogadores (Local)
           </button>
         </div>
       )}
 
       {gameState === "difficulty" && (
         <div style={styles.menu}>
-          <h2>Selecione a Dificuldade:</h2>
+          <h2 style={{ fontSize: '1.2rem', marginBottom: '15px' }}>Selecione a Dificuldade:</h2>
           <button
             onClick={() => selectDifficulty("easy")}
-            style={{ ...styles.button, backgroundColor: colors.easy }}
+            style={{ ...styles.button, backgroundColor: colors.easy, color: 'white' }}
           >
             👶 Fácil
           </button>
           <button
             onClick={() => selectDifficulty("medium")}
-            style={{
-              ...styles.button,
-              backgroundColor: colors.medium,
-              color: "#333",
-            }}
+            style={{ ...styles.button, backgroundColor: colors.medium, color: colors.text, marginTop: '10px' }}
           >
             🧐 Médio
           </button>
           <button
             onClick={() => selectDifficulty("hard")}
-            style={{ ...styles.button, backgroundColor: colors.hard }}
+            style={{ ...styles.button, backgroundColor: colors.hard, color: 'white', marginTop: '10px' }}
           >
             😈 Difícil (Invencível)
           </button>
           <button
             onClick={backToMenu}
-            style={{
-              ...styles.button,
-              backgroundColor: "#bdc3c7",
-              color: "#333",
-              marginTop: "10px",
-            }}
+            style={{ ...styles.button, backgroundColor: 'transparent', color: '#94a3b8', border: '1px solid #e2e8f0', marginTop: '15px' }}
           >
             Voltar
           </button>
         </div>
       )}
 
-      {gameState === "choice" && (
+      {gameState === 'choice' && (
         <div style={styles.menu}>
-          <h2>Você quer jogar com:</h2>
-          <p
-            style={{
-              fontSize: "0.9rem",
-              margin: "-10px 0 10px 0",
-              color: colors.x,
-            }}
-          >
-            (X sempre começa o jogo)
+          <h2 style={{ fontSize: '1.2rem', color: colors.text }}>Com qual você quer jogar?</h2>
+          <p style={{ fontSize: '0.85rem', margin: '-10px 0 20px 0', color: '#64748b' }}>
+            Lembre-se: o <strong>X</strong> sempre começa!
           </p>
-          <div style={{ display: "flex", gap: "15px", width: "100%" }}>
-            <button
-              onClick={() => selectSymbol("X")}
-              style={{ ...styles.button, backgroundColor: colors.x }}
+          
+          <div style={{ display: 'flex', gap: '15px', width: '100%' }}>
+            <button 
+              onClick={() => selectSymbol('X')} 
+              style={{ ...styles.button, backgroundColor: colors.x, color: 'white', flex: 1 }}
             >
               Jogar com X
             </button>
-            <button
-              onClick={() => selectSymbol("O")}
-              style={{ ...styles.button, backgroundColor: colors.o }}
+            <button 
+              onClick={() => selectSymbol('O')} 
+              style={{ ...styles.button, backgroundColor: colors.o, color: 'white', flex: 1 }}
             >
               Jogar com O
             </button>
           </div>
-          <button
-            onClick={backToMenu}
-            style={{
-              ...styles.button,
-              backgroundColor: "#bdc3c7",
-              color: "#333",
-              marginTop: "10px",
-            }}
+
+          <button 
+            onClick={backToMenu} 
+            style={{ ...styles.button, backgroundColor: 'transparent', color: '#94a3b8', marginTop: '15px', border: '1px solid #e2e8f0' }}
           >
-            Cancelar
+            Voltar ao início
           </button>
         </div>
       )}
@@ -401,73 +382,35 @@ export default function App() {
       {gameState === "playing" && (
         <>
           <div
-            style={{
-              display: "flex",
-              gap: "15px",
-              marginBottom: "20px",
-              padding: "10px 20px",
-              backgroundColor: "white",
-              borderRadius: "10px",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.03)",
-              fontSize: "1rem",
-            }}
+            style={{ display: "flex", gap: "20px", marginBottom: "20px", padding: "12px 25px", backgroundColor: "white", borderRadius: "20px", boxShadow: "0 4px 6px rgba(0,0,0,0.03)", fontSize: "1rem" }}
           >
-            <div style={{ fontWeight: "bold", color: colors.x }}>
-              X: {scores.x}
-            </div>
-            <div style={{ fontWeight: "bold", color: colors.draw }}>
-              Empates: {scores.draws}
-            </div>
-            <div style={{ fontWeight: "bold", color: colors.o }}>
-              O: {scores.o}
-            </div>
+            <div style={{ fontWeight: "bold", color: colors.x }}>X: {scores.x}</div>
+            <div style={{ fontWeight: "bold", color: '#94a3b8' }}>Empates: {scores.draws}</div>
+            <div style={{ fontWeight: "bold", color: colors.o }}>O: {scores.o}</div>
           </div>
 
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              marginBottom: "15px",
-              textAlign: "center",
-              color: statusColor,
-            }}
-          >
+          <h2 style={{ fontSize: "1.5rem", marginBottom: "15px", textAlign: "center", color: statusColor, fontWeight: 'bold' }}>
             {status}
           </h2>
 
           <div style={styles.board}>
             {squares.map((value, index) => (
-              <Square
-                key={index}
-                value={value}
-                onSquareClick={() => handleClick(index)}
-              />
+              <Square key={index} value={value} onSquareClick={() => handleClick(index)} />
             ))}
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              marginTop: "25px",
-              width: "90vmin",
-              maxWidth: "400px",
-            }}
-          >
+          <div style={{ display: "flex", gap: "10px", marginTop: "25px", width: "90vmin", maxWidth: "400px" }}>
             {(winner || isDraw) && (
               <button
                 onClick={nextRound}
-                style={{ ...styles.button, backgroundColor: colors.accent }}
+                style={{ ...styles.button, backgroundColor: colors.accent, color: 'white' }}
               >
                 Próxima Rodada
               </button>
             )}
             <button
               onClick={backToMenu}
-              style={{
-                ...styles.button,
-                backgroundColor: "#bdc3c7",
-                color: "#333",
-              }}
+              style={{ ...styles.button, backgroundColor: '#f1f5f9', color: colors.text, border: '1px solid #e2e8f0' }}
             >
               Menu Principal
             </button>
@@ -475,29 +418,14 @@ export default function App() {
         </>
       )}
 
-      {/* RODAPÉ */}
-      <div
-        style={{
-          marginTop: "auto",
-          paddingTop: "40px",
-          paddingBottom: "20px",
-          textAlign: "center",
-          fontSize: "0.9rem",
-          color: "#4a5568",
-        }}
-      >
+      <div style={{ marginTop: "auto", paddingTop: "40px", paddingBottom: "20px", textAlign: "center", fontSize: "0.9rem", color: "#64748b" }}>
         <p>
-          Desenvolvido por <strong>João Marcelo</strong>, estudante de técnico
-          em desenvolvimento de sistemas no SENAI. |{" "}
+          Desenvolvido por <strong style={{color: colors.text}}>João Marcelo</strong>, estudante de técnico em desenvolvimento de sistemas no SENAI. |{" "}
           <a
             href="https://github.com/Jaosuzart"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              color: "#2b6cb0",
-              textDecoration: "none",
-              fontWeight: "bold",
-            }}
+            style={{ color: colors.x, textDecoration: "none", fontWeight: "bold" }}
           >
             Meu GitHub
           </a>
