@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-
-// === CONFIGURAÇÕES GERAIS E ESTILOS ===
 const colors = {
   bg: "#f4f7f6",
   text: "#2c3e50",
@@ -83,7 +81,6 @@ const styles = {
   },
 };
 
-// === COMPONENTES AUXILIARES ===
 function Square({ value, onSquareClick }) {
   const isX = value === "X";
   const color = isX ? colors.x : colors.o;
@@ -94,7 +91,6 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-// === COMPONENTE PRINCIPAL DO JOGO ===
 export default function App() {
   // FASES DO JOGO: 'menu' -> 'difficulty' -> 'choice' -> 'playing'
   const [gameState, setGameState] = useState("menu");
@@ -106,7 +102,6 @@ export default function App() {
   const [xIsNext, setXIsNext] = useState(true);
   const [scores, setScores] = useState({ x: 0, o: 0, draws: 0 });
 
-  // === LÓGICA DA IA ===
   useEffect(() => {
     const winner = calculateWinner(squares);
     const isDraw = !winner && !squares.includes(null);
@@ -131,7 +126,6 @@ export default function App() {
     let move = null;
 
     if (difficulty === "easy") {
-      // FÁCIL: 100% Aleatório
       move =
         availableIndices[Math.floor(Math.random() * availableIndices.length)];
     } else if (difficulty === "medium") {
@@ -152,7 +146,6 @@ export default function App() {
     if (move !== null) handleClick(move, true);
   }
 
-  // Funções de apoio para a IA
   function findWinningMove(symbol) {
     for (let i = 0; i < 9; i++) {
       if (!squares[i]) {
@@ -164,7 +157,6 @@ export default function App() {
     return null;
   }
 
-  // O "Cérebro" invencível da IA Difícil
   function minimax(newBoard, player) {
     const availSpots = newBoard
       .map((s, i) => (s === null ? i : null))
@@ -243,7 +235,6 @@ export default function App() {
       setScores((prev) => ({ ...prev, draws: prev.draws + 1 }));
   }
 
-  // === CONTROLES DE FLUXO ===
   function selectMode(mode) {
     setGameMode(mode);
     if (mode === "PvP") {
@@ -279,8 +270,6 @@ export default function App() {
     setGameState("menu");
     setGameMode(null);
   }
-
-  // === RENDERIZAÇÃO ===
   const winner = calculateWinner(squares);
   const isDraw = !winner && !squares.includes(null);
 
@@ -311,7 +300,6 @@ export default function App() {
         <p style={{ margin: 0, color: '#556270' }}>Jogue contra a IA</p>
       </div>
 
-      {/* TELA 1: MENU INICIAL */}
       {gameState === "menu" && (
         <div style={styles.menu}>
           <h2>Escolha o modo de jogo:</h2>
@@ -330,7 +318,6 @@ export default function App() {
         </div>
       )}
 
-      {/* TELA 2: DIFICULDADE DA IA */}
       {gameState === "difficulty" && (
         <div style={styles.menu}>
           <h2>Selecione a Dificuldade:</h2>
@@ -370,7 +357,6 @@ export default function App() {
         </div>
       )}
 
-      {/* TELA 3: ESCOLHA DE SÍMBOLO */}
       {gameState === "choice" && (
         <div style={styles.menu}>
           <h2>Você quer jogar com:</h2>
@@ -411,7 +397,6 @@ export default function App() {
         </div>
       )}
 
-      {/* TELA 4: JOGO ATIVO */}
       {gameState === "playing" && (
         <>
           <div
@@ -521,7 +506,6 @@ export default function App() {
   );
 }
 
-// === FUNÇÃO AUXILIAR DE VITÓRIA ===
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
