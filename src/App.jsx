@@ -306,13 +306,13 @@ export default function App() {
           <h2>Escolha o modo de jogo:</h2>
           <button
             onClick={() => selectMode("PvP")}
-            style={{ ...styles.button, backgroundColor: colors.accent }}
+            style={{ ...styles.button, backgroundColor: colors.accent, color: "white" }}
           >
             2 Jogadores (Local)
           </button>
           <button
             onClick={() => selectMode("PvIA")}
-            style={{ ...styles.button, backgroundColor: colors.text }}
+            style={{ ...styles.button, backgroundColor: colors.accent, color: "white" }}
           >
             Contra a IA (Computador)
           </button>
