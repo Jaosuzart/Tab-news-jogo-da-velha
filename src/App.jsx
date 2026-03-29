@@ -5,6 +5,7 @@ const colors = {
   boardBg: "#ecf0f1",
   border: "#bdc3c7",
   x: "#c0392b",
+  accent: "#0b5a46",
   o: "#2980b9",
   accent: "#12876f",
   draw: "#d35400",
@@ -294,11 +295,11 @@ export default function App() {
   }
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
+    <main style={styles.container}>
+      <section style={styles.header}>
         <h1 style={styles.title}>Jogo da Velha</h1>
         <p style={{ margin: 0, color: '#556270' }}>Jogue contra a IA</p>
-      </div>
+      </section>
 
       {gameState === "menu" && (
         <div style={styles.menu}>
@@ -502,7 +503,7 @@ export default function App() {
           </a>
         </p>
       </div>
-    </div>
+    </main>
   );
 }
 
