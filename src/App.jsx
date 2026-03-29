@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 const colors = {
-bg: '#f8fafc',      // Fundo quase branco, muito limpo
-  text: '#1e293b',    // Cinza azulado bem escuro (mais moderno que o preto puro)
-  boardBg: '#ffffff', // Tabuleiro branco
-  border: '#e2e8f0',  // Bordas sutis
-  x: '#3b82f6',       // Azul vibrante moderno
-  o: '#10b981',       // Verde esmeralda moderno
-  accent: '#6366f1',  // Indigo (cor de apps modernos tipo Discord/Stripe)
-  draw: '#f59e0b',    // Amarelo âmbar
+ bg: '#f8fafc',      
+  text: '#1e293b',    
+  boardBg: '#ffffff', 
+  border: '#e2e8f0',  
+  x: '#3b82f6',      
+  o: '#10b981',       
+  accent: '#4338ca',  
+  draw: '#f59e0b',    
   easy: '#34d399', 
   medium: '#fbbf24', 
   hard: '#f87171'
@@ -92,10 +92,9 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function App() {
-  // FASES DO JOGO: 'menu' -> 'difficulty' -> 'choice' -> 'playing'
   const [gameState, setGameState] = useState("menu");
   const [gameMode, setGameMode] = useState(null);
-  const [difficulty, setDifficulty] = useState("medium"); // 'easy', 'medium', 'hard'
+  const [difficulty, setDifficulty] = useState("medium"); 
   const [player1Symbol, setPlayer1Symbol] = useState("X");
   const [aiSymbol, setAiSymbol] = useState("O");
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -129,7 +128,6 @@ export default function App() {
       move =
         availableIndices[Math.floor(Math.random() * availableIndices.length)];
     } else if (difficulty === "medium") {
-      // MÉDIO: Tenta ganhar ou bloquear, senão aleatório
       move =
         findWinningMove(aiSymbol) ??
         findWinningMove(player1Symbol) ??
@@ -139,7 +137,6 @@ export default function App() {
               Math.floor(Math.random() * availableIndices.length)
             ]);
     } else if (difficulty === "hard") {
-      // DIFÍCIL: Algoritmo Minimax (Invencível)
       move = minimax(squares, aiSymbol).index;
     }
 
@@ -242,7 +239,7 @@ export default function App() {
       setAiSymbol("O");
       startGame();
     } else {
-      setGameState("difficulty"); // Vai para a tela de dificuldade
+      setGameState("difficulty");
     }
   }
 
@@ -302,7 +299,7 @@ export default function App() {
 
       {gameState === "menu" && (
         <div style={styles.menu}>
-          <h2 style={{ fontSize: '1.2rem', marginBottom: '15px' }}>Escolha o modo de jogo:</h2>
+          <h2 style={{ fontSize: '1.2rem', marginBottom: '15px', color: '#334155' }}>Escolha o modo de jogo:</h2>
           <button
             onClick={() => selectMode("PvIA")}
             style={{ ...styles.button, backgroundColor: colors.accent, color: 'white' }}
