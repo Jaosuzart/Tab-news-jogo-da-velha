@@ -34,6 +34,7 @@ const styles = {
     gap: "15px",
     marginTop: "20px",
     width: "100%",
+    boxSizing: "border-box",
     maxWidth: "400px",
     padding: "30px",
     backgroundColor: "white",
@@ -415,7 +416,7 @@ export default function App() {
         </>
       )}
 
-      <div style={{ marginTop: "auto", paddingTop: "40px", paddingBottom: "20px", textAlign: "center", fontSize: "0.9rem", color: "#64748b" }}>
+      <div style={{ marginTop: "auto",  paddingTop: "60px", paddingBottom: "20px", textAlign: "center", fontSize: "0.9rem", color: "#64748b" }}>
         <p>
           Desenvolvido por <strong style={{color: colors.text}}>João Marcelo</strong>, estudante de técnico em desenvolvimento de sistemas no SENAI. |{" "}
           <a
