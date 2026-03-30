@@ -33,24 +33,6 @@ http://localhost:5173
 Este projeto está sob a licença MIT.
 Você pode usar, copiar, modificar e distribuir livremente.
 Veja mais detalhes no arquivo LICENSE
-📜 Conteúdo do arquivo LICENSE
-Crie um arquivo chamado LICENSE na raiz do projeto com o seguinte conteúdo:
-MIT License
-Copyright (c) 2026 João Marcelo
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 👨‍💻 Autor
 João Marcelo
 🎓 Estudante de Desenvolvimento de Sistemas — SENAI (Salvador - BA)
