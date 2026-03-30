@@ -32,7 +32,6 @@ http://localhost:5173
 📄 Licença
 Este projeto está sob a licença MIT.
 Você pode usar, copiar, modificar e distribuir livremente.
-Veja mais detalhes no arquivo LICENSE
 👨‍💻 Autor
 João Marcelo
 🎓 Estudante de Desenvolvimento de Sistemas — SENAI (Salvador - BA)
